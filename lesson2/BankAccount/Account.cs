@@ -136,5 +136,18 @@ namespace BankAccount
             return true;
         }
 
+        public bool TransactionAdd(Account fromWithdraw, decimal summ)
+        {
+            if (fromWithdraw.Balance < summ)
+            {
+                return false;
+            }
+
+            fromWithdraw.Withdrawed(summ);
+            this.balance = this.balance + summ;
+
+            return true;
+        }
+
     }
 }
