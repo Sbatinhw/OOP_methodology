@@ -30,8 +30,19 @@ namespace RatioDemo
             return !Compare(r1, r2);
         }
 
+        public override bool Equals(object obj)
+        {
+                Ratio r = (Ratio)obj;
+                return Compare(this, r);
+        }
+
         private static bool Compare(Ratio r1, Ratio r2)
         {
+            if (r1 == null || r2 == null)
+            {
+                return false;
+            }
+
             if (r1.denominator == r2.denominator)
             {
                 if (r1.numerator == r2.numerator)
