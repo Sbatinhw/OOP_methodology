@@ -70,6 +70,16 @@ namespace RatioDemo
             return new Ratio(ratio.numerator - ratio.denominator, ratio.denominator);
         }
 
+        public static implicit operator float(Ratio ratio)
+        {
+            return (float)ratio.numerator / (float)ratio.denominator;
+        }
+
+        public static implicit operator int(Ratio ratio)
+        {
+            return ratio.numerator / ratio.denominator;
+        }
+
         public override bool Equals(object obj)
         {
             try 
