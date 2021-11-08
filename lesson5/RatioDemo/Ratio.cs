@@ -50,6 +50,16 @@ namespace RatioDemo
             return !FirstMoreSecond(r1, r2) || Compare(r1, r2);
         }
 
+        public static Ratio operator +(Ratio r1, Ratio r2)
+        {
+            return Addition(r1, r2);
+        }
+
+        public static Ratio operator -(Ratio r1, Ratio r2)
+        {
+            return Subtraction(r1, r2);
+        }
+
         public override bool Equals(object obj)
         {
             try 
@@ -60,6 +70,40 @@ namespace RatioDemo
             catch
             {
                 return false;
+            }
+        }
+
+        private static Ratio Addition(Ratio r1, Ratio r2)
+        {
+            if (r1 == null || r2 == null)
+            {
+                return default;
+            }
+
+            if (r1.denominator == r2.denominator)
+            {
+                return new Ratio(r1.numerator + r2.numerator, r1.denominator);
+            }
+            else
+            {
+                return new Ratio((r1.numerator * r2.denominator) + (r2.numerator * r1.denominator), r1.denominator * r2.denominator);
+            }
+        }
+
+        private static Ratio Subtraction(Ratio r1, Ratio r2)
+        {
+            if (r1 == null || r2 == null)
+            {
+                return default;
+            }
+
+            if (r1.denominator == r2.denominator)
+            {
+                return new Ratio(r1.numerator - r2.numerator, r1.denominator);
+            }
+            else
+            {
+                return new Ratio((r1.numerator * r2.denominator) - (r2.numerator * r1.denominator), r1.denominator * r2.denominator);
             }
         }
 
