@@ -30,6 +30,26 @@ namespace RatioDemo
             return !Compare(r1, r2);
         }
 
+        public static bool operator >(Ratio r1, Ratio r2)
+        {
+            return FirstMoreSecond(r1, r2);
+        }
+
+        public static bool operator <(Ratio r1, Ratio r2)
+        {
+            return !FirstMoreSecond(r1, r2);
+        }
+
+        public static bool operator >=(Ratio r1, Ratio r2)
+        {
+            return FirstMoreSecond(r1, r2) || Compare(r1, r2);
+        }
+
+        public static bool operator <=(Ratio r1, Ratio r2)
+        {
+            return !FirstMoreSecond(r1, r2) || Compare(r1, r2);
+        }
+
         public override bool Equals(object obj)
         {
             try 
@@ -41,6 +61,30 @@ namespace RatioDemo
             {
                 return false;
             }
+        }
+
+        private static bool FirstMoreSecond(Ratio first, Ratio second)
+        {
+            if (first == null || second == null)
+            {
+                return false;
+            }
+
+            if (first.denominator == second.denominator)
+            {
+                if (first.numerator > second.numerator)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if ((first.numerator * second.denominator) > (second.numerator * first.denominator))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private static bool Compare(Ratio r1, Ratio r2)
