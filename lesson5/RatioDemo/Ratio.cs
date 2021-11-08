@@ -83,6 +83,11 @@ namespace RatioDemo
             }
         }
 
+        public override string ToString()
+        {
+            return $"{numerator} / {denominator}";
+        }
+
         private static Ratio Addition(Ratio r1, Ratio r2)
         {
             if (r1 == null || r2 == null)
