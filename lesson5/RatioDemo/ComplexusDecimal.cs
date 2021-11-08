@@ -20,5 +20,9 @@ namespace ComplexusNum
             get { return b; }
         }
 
+        public override string ToString()
+        {
+            return $"{a}+{b}i";
+        }
     }
 }
