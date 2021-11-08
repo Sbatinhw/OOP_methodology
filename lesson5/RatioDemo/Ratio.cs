@@ -60,6 +60,16 @@ namespace RatioDemo
             return Subtraction(r1, r2);
         }
 
+        public static Ratio operator ++(Ratio ratio)
+        {
+            return new Ratio(ratio.numerator + ratio.denominator, ratio.denominator);
+        }
+
+        public static Ratio operator --(Ratio ratio)
+        {
+            return new Ratio(ratio.numerator - ratio.denominator, ratio.denominator);
+        }
+
         public override bool Equals(object obj)
         {
             try 
