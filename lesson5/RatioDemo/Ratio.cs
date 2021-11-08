@@ -70,14 +70,49 @@ namespace RatioDemo
             return new Ratio(ratio.numerator - ratio.denominator, ratio.denominator);
         }
 
-        public static implicit operator float(Ratio ratio)
+        public static explicit operator float(Ratio ratio)
         {
             return (float)ratio.numerator / (float)ratio.denominator;
         }
 
-        public static implicit operator int(Ratio ratio)
+        public static explicit operator int(Ratio ratio)
         {
             return ratio.numerator / ratio.denominator;
+        }
+
+        public static Ratio operator *(int scale, Ratio ratio)
+        {
+            return new Ratio(ratio.numerator * scale, ratio.denominator);
+        }
+
+        public static Ratio operator *(Ratio ratio, int scale)
+        {
+            return new Ratio(ratio.numerator * scale, ratio.denominator);
+        }
+
+        public static Ratio operator *(Ratio r1, Ratio r2)
+        {
+            return new Ratio(r1.numerator * r2.numerator, r1.denominator * r2.denominator);
+        }
+
+        public static Ratio operator /(Ratio ratio, int scale)
+        {
+            return new Ratio(ratio.numerator, ratio.denominator * scale);
+        }
+
+        public static Ratio operator /(int scale, Ratio ratio)
+        {
+            return new Ratio(ratio.numerator, ratio.denominator * scale);
+        }
+
+        public static Ratio operator /(Ratio r1, Ratio r2)
+        {
+            return new Ratio(r1.numerator * r2.denominator, r1.denominator * r2.numerator);
+        }
+
+        public static int operator %(Ratio r1, Ratio r2)
+        {
+            return (r1.numerator / r2.denominator) % (r1.denominator / r2.numerator);
         }
 
         public override bool Equals(object obj)
