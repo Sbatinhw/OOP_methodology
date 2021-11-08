@@ -32,8 +32,15 @@ namespace RatioDemo
 
         public override bool Equals(object obj)
         {
+            try 
+            {
                 Ratio r = (Ratio)obj;
                 return Compare(this, r);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private static bool Compare(Ratio r1, Ratio r2)
