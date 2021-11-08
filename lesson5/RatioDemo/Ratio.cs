@@ -19,5 +19,34 @@ namespace RatioDemo
             this.numerator = numerator;
             this.denominator = denominator;
         }
+
+        public static bool operator ==(Ratio r1, Ratio r2)
+        {
+            return Compare(r1, r2);
+        }
+
+        public static bool operator !=(Ratio r1, Ratio r2)
+        {
+            return !Compare(r1, r2);
+        }
+
+        private static bool Compare(Ratio r1, Ratio r2)
+        {
+            if (r1.denominator == r2.denominator)
+            {
+                if (r1.numerator == r2.numerator)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if ((r1.numerator * r2.denominator) == (r2.numerator * r1.denominator))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
