@@ -49,7 +49,7 @@ namespace ComplexusNum
                 sym = "-";
             }
             string result = $"{a}{sym}{b}i";
-            return sym;
+            return result;
         }
 
         public override bool Equals(object obj)
