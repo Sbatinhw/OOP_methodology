@@ -43,7 +43,36 @@ namespace ComplexusNum
 
         public override string ToString()
         {
-            return $"{a}+{b}i";
+            string sym = "+";
+            if(b < 0)
+            {
+                sym = "-";
+            }
+            string result = $"{a}{sym}{b}i";
+            return sym;
+        }
+
+        public override bool Equals(object obj)
+        {
+            ComplexusDecimal complexus;
+
+            if (this == null || obj == null) { return false; }
+
+            try
+            {
+                complexus = (ComplexusDecimal)obj;
+            }
+            catch
+            {
+                return false;
+            }
+
+            if(this.a == complexus.a && this.b == complexus.b)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
