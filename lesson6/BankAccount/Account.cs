@@ -159,6 +159,11 @@ namespace BankAccount
             }
         }
 
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(id, accountType);
+        }
+
         private static bool Compare(Account a1, Account a2)
         {
             if(a1 == null || a2 == null)
