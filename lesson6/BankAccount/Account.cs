@@ -164,6 +164,11 @@ namespace BankAccount
             return HashCode.Combine(id, accountType);
         }
 
+        public override string ToString()
+        {
+            return $"Id: {Id}\nAccount Type: {AccountType}\nBalance: {Balance}";
+        }
+
         private static bool Compare(Account a1, Account a2)
         {
             if(a1 == null || a2 == null)
